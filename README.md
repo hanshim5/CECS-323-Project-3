@@ -63,6 +63,7 @@ Seat GA1 for $202.
 Tickets to see Dudamel Leads Beethoven 9:
 Seat A1, for $50
 Three tickets for Box A, at $200 each.
+
 **Python application**
 You must now write a Python application using PyMongo to interact with this concerts database.
 
@@ -84,6 +85,7 @@ filtering sections in those venues that are titled 'General Admission', i.e., mu
 joining the sections to tickets from the section.
 summing the prices of the tickets in the section
 Print the results in the format Venue Name - Section Title - $TotalOfTicketPrices
+
 **Deliverables**
 You must deliver to me a printout containing the following documents:
 
