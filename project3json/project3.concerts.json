@@ -1,0 +1,241 @@
+[{
+  "_id": {
+    "$oid": "67526f1329ccfdd280dd6845"
+  },
+  "$jsonSchema": {
+    "title": "Concert",
+    "description": "A concert held at a venue.",
+    "bsonType": "object",
+    "required": [
+      "_id",
+      "title",
+      "start",
+      "tour",
+      "performers",
+      "venue",
+      "tickets"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "title": {
+        "bsonType": "string"
+      },
+      "start": {
+        "bsonType": "date"
+      },
+      "tour": {
+        "bsonType": "string"
+      },
+      "perfomers": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "object",
+          "required": [
+            "order",
+            "artist"
+          ],
+          "properties": {
+            "order": {
+              "bsonType": "int"
+            },
+            "artist": {
+              "bsonType": "object",
+              "required": [
+                "_id",
+                "name"
+              ],
+              "properties": {
+                "_id": {
+                  "bsonType": "objectId"
+                },
+                "name": {
+                  "bsonType": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "venue": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "name",
+          "city",
+          "state"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "name": {
+            "bsonType": "string"
+          },
+          "city": {
+            "bsonType": "string"
+          },
+          "state": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "tickets": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "objectId"
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "64d9e8f01c4a3a001b8e9c01"
+  },
+  "title": "The Eras Tour Night 1",
+  "start": {
+    "$date": "2023-08-03T20:00:00.000Z"
+  },
+  "tour": "The Eras Tour",
+  "performers": [
+    {
+      "order": 1,
+      "artist": {
+        "_id": {
+          "$oid": "64c9e8f01c4a3a001b8e9f02"
+        },
+        "name": "Taylor Swift"
+      }
+    }
+  ],
+  "venue": {
+    "_id": {
+      "$oid": "64a7f26e7eac6c1b1a3c8f99"
+    },
+    "name": "SoFi Stadium",
+    "city": "Inglewood",
+    "state": "CA"
+  },
+  "tickets": []
+},
+{
+  "_id": {
+    "$oid": "64d9e8f01c4a3a001b8e9c02"
+  },
+  "title": "The Eras Tour Night 2",
+  "start": {
+    "$date": "2023-08-04T20:00:00.000Z"
+  },
+  "tour": "The Eras Tour",
+  "performers": [
+    {
+      "order": 1,
+      "artist": {
+        "_id": {
+          "$oid": "64c9e8f01c4a3a001b8e9f02"
+        },
+        "name": "Taylor Swift"
+      }
+    }
+  ],
+  "venue": {
+    "_id": {
+      "$oid": "64a7f26e7eac6c1b1a3c8f99"
+    },
+    "name": "SoFi Stadium",
+    "city": "Inglewood",
+    "state": "CA"
+  },
+  "tickets": []
+},
+{
+  "_id": {
+    "$oid": "64d9e8f01c4a3a001b8e9c03"
+  },
+  "title": "Dudamel Leads Beethoven 9",
+  "start": {
+    "$date": "2024-09-10T16:30:00.000Z"
+  },
+  "tour": "LA Phil Summer Season",
+  "performers": [
+    {
+      "order": 1,
+      "artist": {
+        "_id": {
+          "$oid": "64c9e8f01c4a3a001b8e9f01"
+        },
+        "name": "LA Phil"
+      }
+    }
+  ],
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl",
+    "city": "Los Angeles",
+    "state": "CA"
+  },
+  "tickets": [
+    {
+      "$oid": "67526f2239ccfdd280dd6852"
+    },
+    {
+      "$oid": "67526f2239ccfdd280dd6853"
+    },
+    {
+      "$oid": "67526f2239ccfdd280dd6854"
+    },
+    {
+      "$oid": "67526f2239ccfdd280dd6855"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "64d9e8f01c4a3a001b8e9c04"
+  },
+  "title": "What If?",
+  "start": {
+    "$date": "2026-07-01T22:00:00.000Z"
+  },
+  "tour": "",
+  "performers": [
+    {
+      "order": 1,
+      "artist": {
+        "_id": {
+          "$oid": "64c9e8f01c4a3a001b8e9f03"
+        },
+        "name": "Kendrick Lamar"
+      }
+    },
+    {
+      "order": 2,
+      "artist": {
+        "_id": {
+          "$oid": "64c9e8f01c4a3a001b8e9f04"
+        },
+        "name": "Drake"
+      }
+    }
+  ],
+  "venue": {
+    "_id": {
+      "$oid": "64a7f26e7eac6c1b1a3c8f99"
+    },
+    "name": "SoFi Stadium",
+    "city": "Inglewood",
+    "state": "CA"
+  },
+  "tickets": [
+    {
+      "$oid": "64d9e8f01c4a3a001b8e9c04"
+    },
+    {
+      "$oid": "67526f2239ccfdd280dd6851"
+    }
+  ]
+}]
