@@ -4,6 +4,7 @@ import certifi
 # Mongo connection setup
 
 #mongodb://localhost:27017/  <- Hannah's connection string
+# localhost:27017 [kinoko connection]
 try:
     connection_string = str(input("Input your connection string: "))
     
