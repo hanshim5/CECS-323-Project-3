@@ -34,10 +34,14 @@ except Exception as e:
     exit()
 
 while True:
-    print("Select a query number(1-3) or exit(4): \n   1. State report\n   2. Artist search\n3. General admission totals\n   4. Exit\n")
+    print("\nSelect a query number(1-3) or exit(4): \n   "
+          "1. State report\n   "
+          "2. Artist search\n   "
+          "3. General admission totals\n   "
+          "4. Exit\n")
     try:
-        #query_num = int(input("please enter: "))  # Ensure the input is an integer
-        query_num = 2
+        query_num = int(input("please enter: "))  # Ensure the input is an integer
+        #query_num = 2
     except ValueError:
         print("Invalid input. Please enter a number between 1 and 4.")
         continue
@@ -50,7 +54,8 @@ while True:
 
         for info in (venues.aggregate([{'$group': {'_id': '$state','venueCount': {'$sum': 1}}}])):
             print(f"State: {info['_id']} | Venues Amount: {info['venueCount']}")
-        break
+
+        print("\n")
 
     elif query_num == 2:
         print("QUERY 2\n")
@@ -76,14 +81,25 @@ while True:
         for info in (concerts.aggregate(myPipeline)):
             print(f"Title: {info['title']}, Date: {info['start']}, Venue: {info['venue']['name']}, "
                   f"City: {info['venue']['city']}, State: {info['venue']['state']}")
-
-        break
-
-
-
+        print("\n")
 
     elif query_num == 3:
-        print("query 3")
+        print("query 3\n")
+
+        myPipeline = [
+        {'$unwind': {'path': '$sections'}},
+        {'$match': {'state': 'CA', 'sections.title': 'General Admission'}},
+        {'$unwind': {'path': '$sections.seats'}},
+        {'$lookup': {'from': 'tickets', 'localField': 'sections.title', 'foreignField': 'seat.sectionTitle', 'as': 'result'}},
+        {'$unwind': {'path': '$result'}},
+        {'$group': {'_id': '$name', 'total': {'$sum': '$result.price'}}}
+        ]
+
+        result = venues.aggregate(myPipeline)
+
+        for info in result:
+            print(f"Venue name: {info['_id']} ,total: {info['total']}")
+        print("\n")
     elif query_num == 4:
         print("Exiting program...")
         break
