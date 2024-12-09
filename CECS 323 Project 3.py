@@ -37,7 +37,7 @@ while True:
     print("Select a query number(1-3) or exit(4): \n   1. State report\n   2. Artist search\n3. General admission totals\n   4. Exit\n")
     try:
         #query_num = int(input("please enter: "))  # Ensure the input is an integer
-        query_num = 1
+        query_num = 2
     except ValueError:
         print("Invalid input. Please enter a number between 1 and 4.")
         continue
@@ -53,7 +53,35 @@ while True:
         break
 
     elif query_num == 2:
-        print("query 2")
+        print("QUERY 2\n")
+        artist_input =  str(input("please enter artist name: "))
+
+        myPipeline = [
+            #CONCERT DATABASE
+
+            #performers.artist.name : to match the input artist
+            {'$match': {'performers.artist.name': artist_input}},
+
+            #base on match, project the info [some from concert/ some frome venue objects]
+            {'$project': {
+                '_id': 0,
+                'title': 1,
+                'start': 1,
+                'venue.name': 1,
+                'venue.city': 1,
+                'venue.state': 1
+            }}
+        ]
+
+        for info in (concerts.aggregate(myPipeline)):
+            print(f"Title: {info['title']}, Date: {info['start']}, Venue: {info['venue']['name']}, "
+                  f"City: {info['venue']['city']}, State: {info['venue']['state']}")
+
+        break
+
+
+
+
     elif query_num == 3:
         print("query 3")
     elif query_num == 4:
