@@ -1,0 +1,135 @@
+[{
+  "_id": {
+    "$oid": "67526f1a29ccfdd280dd6847"
+  },
+  "$jsonSchema": {
+    "title": "Seat",
+    "description": "A seat at a venue.",
+    "bsonType": "object",
+    "required": [
+      "_id",
+      "title",
+      "venue",
+      "sectionTitle",
+      "maxTickets",
+      "labels"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "title": {
+        "bsonType": "string"
+      },
+      "venue": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "name"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "name": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "sectionTitle": {
+        "bsonType": "string"
+      },
+      "maxTickets": {
+        "bsonType": "int"
+      },
+      "labels": {
+        "bsonType": "array",
+        "items": {
+          "bsonType": "string"
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "64f9e8f01c4a3a001b8e9a01"
+  },
+  "title": "Box A",
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl"
+  },
+  "sectionTitle": "Lower Box",
+  "maxTickets": 10,
+  "labels": []
+},
+{
+  "_id": {
+    "$oid": "64f9e8f01c4a3a001b8e9a02"
+  },
+  "title": "Box B",
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl"
+  },
+  "sectionTitle": "Lower Box",
+  "maxTickets": 10,
+  "labels": [
+    "accessible seating",
+    "in-seat attendant"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64f9e8f01c4a3a001b8e9a03"
+  },
+  "title": "A1",
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl"
+  },
+  "sectionTitle": "A",
+  "maxTickets": 1,
+  "labels": [
+    "obstructed viewing"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64f9e8f01c4a3a001b8e9a04"
+  },
+  "title": "A2",
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl"
+  },
+  "sectionTitle": "A",
+  "maxTickets": 1,
+  "labels": [
+    "obstructed viewing"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64a7f26e7eac6c1b1a3c8fa4"
+  },
+  "title": "GA1",
+  "venue": {
+    "_id": {
+      "$oid": "64a7f26e7eac6c1b1a3c8f99"
+    },
+    "name": "SoFi Stadium"
+  },
+  "sectionTitle": "General Admission",
+  "maxTickets": 100,
+  "labels": []
+}]

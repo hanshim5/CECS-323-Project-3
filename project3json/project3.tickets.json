@@ -1,0 +1,234 @@
+[{
+  "_id": {
+    "$oid": "67526f2229ccfdd280dd6849"
+  },
+  "$jsonSchema": {
+    "title": "Ticket",
+    "description": "A ticket sold to a concert.",
+    "bsonType": "object",
+    "required": [
+      "_id",
+      "price",
+      "concert",
+      "venue",
+      "seat"
+    ],
+    "properties": {
+      "_id": {
+        "bsonType": "objectId"
+      },
+      "price": {
+        "bsonType": "decimal"
+      },
+      "concert": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "title"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "title": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "venue": {
+        "bsonType": "object",
+        "required": [
+          "_id",
+          "name",
+          "city",
+          "state"
+        ],
+        "properties": {
+          "_id": {
+            "bsonType": "objectId"
+          },
+          "title": {
+            "bsonType": "string"
+          },
+          "city": {
+            "bsonType": "string"
+          },
+          "state": {
+            "bsonType": "string"
+          }
+        }
+      },
+      "seat": {
+        "bsonType": "object",
+        "required": [
+          "sectionTitle",
+          "seatTitle"
+        ],
+        "properties": {
+          "sectionTitle": {
+            "bsonType": "string"
+          },
+          "seatTitle": {
+            "bsonType": "string"
+          }
+        }
+      }
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "67526f2239ccfdd280dd6850"
+  },
+  "price": {
+    "$numberDecimal": "500.00"
+  },
+  "concert": {
+    "_id": {
+      "$oid": "64d9e8f01c4a3a001b8e9c04"
+    },
+    "title": "What If?"
+  },
+  "venue": {
+    "_id": {
+      "$oid": "64a7f26e7eac6c1b1a3c8f99"
+    },
+    "name": "SoFi Stadium",
+    "city": "Inglewood",
+    "state": "CA"
+  },
+  "seat": {
+    "sectionTitle": "General Admission",
+    "seatTitle": "GA1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67526f2239ccfdd280dd6851"
+  },
+  "price": {
+    "$numberDecimal": "202.00"
+  },
+  "concert": {
+    "_id": {
+      "$oid": "64d9e8f01c4a3a001b8e9c04"
+    },
+    "title": "What If?"
+  },
+  "venue": {
+    "_id": {
+      "$oid": "64a7f26e7eac6c1b1a3c8f99"
+    },
+    "name": "SoFi Stadium",
+    "city": "Inglewood",
+    "state": "CA"
+  },
+  "seat": {
+    "sectionTitle": "General Admission",
+    "seatTitle": "GA1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67526f2239ccfdd280dd6852"
+  },
+  "price": {
+    "$numberDecimal": "50.00"
+  },
+  "concert": {
+    "_id": {
+      "$oid": "64d9e8f01c4a3a001b8e9c03"
+    },
+    "title": "Dudamel Leads Beethoven 9"
+  },
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl",
+    "city": "Los Angeles",
+    "state": "CA"
+  },
+  "seat": {
+    "sectionTitle": "A",
+    "seatTitle": "A1"
+  }
+},
+{
+  "_id": {
+    "$oid": "67526f2239ccfdd280dd6853"
+  },
+  "price": {
+    "$numberDecimal": "200.00"
+  },
+  "concert": {
+    "_id": {
+      "$oid": "64d9e8f01c4a3a001b8e9c03"
+    },
+    "title": "Dudamel Leads Beethoven 9"
+  },
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl",
+    "city": "Los Angeles",
+    "state": "CA"
+  },
+  "seat": {
+    "sectionTitle": "Box A",
+    "seatTitle": "Box A"
+  }
+},
+{
+  "_id": {
+    "$oid": "67526f2239ccfdd280dd6854"
+  },
+  "price": {
+    "$numberDecimal": "200.00"
+  },
+  "concert": {
+    "_id": {
+      "$oid": "64d9e8f01c4a3a001b8e9c03"
+    },
+    "title": "Dudamel Leads Beethoven 9"
+  },
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl",
+    "city": "Los Angeles",
+    "state": "CA"
+  },
+  "seat": {
+    "sectionTitle": "Box A",
+    "seatTitle": "Box A"
+  }
+},
+{
+  "_id": {
+    "$oid": "67526f2239ccfdd280dd6855"
+  },
+  "price": {
+    "$numberDecimal": "200.00"
+  },
+  "concert": {
+    "_id": {
+      "$oid": "64d9e8f01c4a3a001b8e9c03"
+    },
+    "title": "Dudamel Leads Beethoven 9"
+  },
+  "venue": {
+    "_id": {
+      "$oid": "64b8f37e8fac7d2c2a5b8e01"
+    },
+    "name": "Hollywood Bowl",
+    "city": "Los Angeles",
+    "state": "CA"
+  },
+  "seat": {
+    "sectionTitle": "Box A",
+    "seatTitle": "Box A"
+  }
+}]
