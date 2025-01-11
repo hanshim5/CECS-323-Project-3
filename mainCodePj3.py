@@ -3,11 +3,10 @@ import certifi
 
 # Mongo connection setup
 
-#mongodb://localhost:27017/  <- Hannah's connection string
-# localhost:27017 [kinoko connection]
+# localhost:27017
 try:
     #connection_string = str(input("Input your connection string: "))
-    connection_string = "localhost:27017"
+    connection_string = "mongodb://localhost:27017/" # connect locally
     # Create MongoDB client
     client = MongoClient(connection_string)
     db = client['project3']
@@ -18,16 +17,6 @@ try:
     seats = db['seats']
     tickets = db['tickets']
     venues = db['venues']
-
-
-    # FOR TESTING PURPOSES:
-    # Print available collections
-    # print("Mongo Collection names:")
-    # print(db.list_collection_names())
-    #
-    # print("Sample data from artists collection:")
-    # for doc in artists.find().limit(5):
-    #     print(doc)
 
 except Exception as e:
     print(f"Error connecting to MongoDB: {e}")
@@ -40,34 +29,33 @@ while True:
           "3. General admission totals\n   "
           "4. Exit\n")
     try:
-        query_num = int(input("please enter: "))  # Ensure the input is an integer
+        query_num = int(input("Please enter: "))  # Ensure the input is an integer
         #query_num = 2
     except ValueError:
         print("Invalid input. Please enter a number between 1 and 4.")
         continue
 
     if query_num == 1:
-        #report = concerts.find({})
+        # Print out each state that has at least one venue, and also
+        # include the number of venues in that state in your printout.
         print("--- QUERY 1 ---\n")
-        #myPipeline = venues.aggregate([{'$group': {'_id': '$state','venueCount': {'$sum': 1}}}])
-        #myResult = venues.aggregate(myPipeline)
-
         for info in (venues.aggregate([{'$group': {'_id': '$state','venueCount': {'$sum': 1}}}])):
             print(f"State: {info['_id']} | Venues Amount: {info['venueCount']}")
 
         print("\n")
 
     elif query_num == 2:
-        print("QUERY 2\n")
-        artist_input =  str(input("please enter artist name: "))
+        # Input the name of an Artist.
+        # Print the title, date, venue name, venue city, and venue state
+        #   of all concerts in which an artist with the given name played.
+        # Print out the concerts one per line.
+        print("--- QUERY 2 ---\n")
+        artist_input =  str(input("Please enter artist name(LA Phil, Taylor Swift, Kendrick Lamar, Drake): "))
 
         myPipeline = [
-            #CONCERT DATABASE
-
-            #performers.artist.name : to match the input artist
             {'$match': {'performers.artist.name': artist_input}},
 
-            #base on match, project the info [some from concert/ some frome venue objects]
+            #base on match, project the info [some from concert / some from venue objects]
             {'$project': {
                 '_id': 0,
                 'title': 1,
@@ -79,15 +67,15 @@ while True:
         ]
 
         for info in (concerts.aggregate(myPipeline)):
-            print(f"Title: {info['title']} "
-                  f"\nDate: {info['start']}"
-                  f"\nVenue: {info['venue']['name']} "
-                  f"\nCity: {info['venue']['city']}"
-                  f"\nState: {info['venue']['state']}\n")
+            print(f"Title: {info['title']}, Date: {info['start']}, Venue: {info['venue']['name']}, "
+                  f"City: {info['venue']['city']}, State: {info['venue']['state']}")
         print("\n")
 
     elif query_num == 3:
-        print("query 3\n")
+        # Print out all the sum cost of all tickets sold for any venue section
+        # that is titled "General Admission" at a venue in the state of 'CA'.
+        # Show the sum per section.
+        print("--- QUERY 3 ---\n")
 
         myPipeline = [
         {'$unwind': {'path': '$sections'}},
@@ -95,13 +83,15 @@ while True:
         {'$unwind': {'path': '$sections.seats'}},
         {'$lookup': {'from': 'tickets', 'localField': 'sections.title', 'foreignField': 'seat.sectionTitle', 'as': 'result'}},
         {'$unwind': {'path': '$result'}},
-        {'$group': {'_id': '$name', 'total': {'$sum': '$result.price'}}}
+        {'$group': {'_id': {'venueName': "$name", 'sectionTitle': "$result.seat.sectionTitle"},
+        'total': {'$sum': "$result.price"}}},
+        {'$project': {'name': '$_id.venueName', 'sectionTitle':'$_id.sectionTitle', 'total':1}}
         ]
 
         result = venues.aggregate(myPipeline)
 
         for info in result:
-            print(f"Venue name: {info['_id']} ,total: {info['total']}")
+            print(f"{info['name']} - {info['sectionTitle']} - ${info['total']}")
         print("\n")
     elif query_num == 4:
         print("Exiting program...")
